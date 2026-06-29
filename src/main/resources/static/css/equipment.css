@@ -1,0 +1,697 @@
+/* ==========================
+   Google Font
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* ==========================
+   Layout
+========================== */
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ==========================
+   Sidebar
+========================== */
+
+.sidebar{
+
+    width:250px;
+    background:linear-gradient(180deg,#0f4c81,#1565c0);
+    color:white;
+    padding:30px 20px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+
+}
+
+.logo{
+
+    text-align:center;
+    margin-bottom:40px;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+
+}
+
+.sidebar nav{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.sidebar nav a{
+
+    color:white;
+    text-decoration:none;
+
+    padding:14px 18px;
+
+    margin-bottom:12px;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+    font-size:17px;
+
+}
+
+.sidebar nav a:hover{
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.active{
+
+    background:white;
+    color:#1565c0 !important;
+    font-weight:bold;
+
+}
+
+/* ==========================
+   Main
+========================== */
+
+.main{
+
+    margin-left:250px;
+
+    width:100%;
+
+    padding:35px;
+
+}
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.page-header h1{
+
+    color:#0f4c81;
+
+    font-size:34px;
+
+}
+
+.page-header p{
+
+    color:#666;
+    margin-top:5px;
+
+}
+
+/* ==========================
+   Dashboard Button
+========================== */
+
+.dashboard-btn{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+    background:#0f4c81;
+
+}
+
+/* ==========================
+   Cards
+========================== */
+
+.card{
+
+    background:white;
+
+    padding:28px;
+
+    border-radius:15px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+
+    margin-bottom:25px;
+
+    color:#0f4c81;
+
+}
+
+/* ==========================
+   Form
+========================== */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.full-width{
+
+    grid-column:1/3;
+
+}
+
+input,
+select{
+
+    padding:14px;
+
+    border:1px solid #d5dbe5;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+input:focus,
+select:focus{
+
+    border-color:#1565c0;
+
+    box-shadow:0 0 8px rgba(21,101,192,.25);
+
+}
+
+.button-group{
+
+    margin-top:25px;
+
+}
+
+.save-btn{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.save-btn:hover{
+
+    background:#0f4c81;
+
+}
+
+/* ==========================
+   Toolbar
+========================== */
+
+.toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.search-box,
+.filter-box{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.search-box input{
+
+    width:300px;
+
+}
+
+/* ==========================
+   Buttons
+========================== */
+
+.search-box button,
+.filter-box button{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.search-box button:hover,
+.filter-box button:hover{
+
+    background:#0f4c81;
+
+}
+
+/* ==========================
+   Table
+========================== */
+
+.table-container{
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+thead{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+th{
+
+    padding:15px;
+
+    font-size:15px;
+
+}
+
+td{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr:hover{
+
+    background:#f5f9ff;
+
+}
+
+/* ==========================
+   Edit Delete Buttons
+========================== */
+
+.edit-btn{
+
+    background:#2e7d32;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    margin-right:5px;
+
+}
+
+.edit-btn:hover{
+
+    background:#1b5e20;
+
+}
+
+.delete-btn{
+
+    background:#d32f2f;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.delete-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:900px){
+
+.sidebar{
+
+    width:100%;
+    position:relative;
+
+}
+
+.main{
+
+    margin-left:0;
+
+}
+
+.container{
+
+    flex-direction:column;
+
+}
+
+.form-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.full-width{
+
+    grid-column:auto;
+
+}
+
+.toolbar{
+
+    flex-direction:column;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+}
+.status{
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.available{
+
+    background:#28a745;
+
+}
+
+.issued{
+
+    background:#ff9800;
+
+}
+
+.maintenance{
+
+    background:#dc3545;
+
+}
+
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+/* Laptop */
+
+@media (max-width:1200px){
+
+    .table-container{
+        overflow-x:auto;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:992px){
+
+    .container{
+        flex-direction:row;
+    }
+
+    .sidebar{
+        width:220px;
+    }
+
+    .main{
+        margin-left:220px;
+        padding:25px;
+    }
+
+    .form-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        position:relative;
+        height:auto;
+    }
+
+    .sidebar nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:20px;
+    }
+
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .search-box,
+    .filter-box{
+        width:100%;
+    }
+
+    .search-box input,
+    .filter-box select{
+        width:100%;
+    }
+
+    .table-container{
+        overflow-x:auto;
+    }
+
+}
+
+/* Small Mobile */
+
+@media (max-width:480px){
+
+    .page-header h1{
+        font-size:28px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .button-group button{
+        width:100%;
+    }
+
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+========================================== */
+
+.toast{
+
+    position:fixed;
+
+    top:30px;
+
+    right:30px;
+
+    background:#2E7D32;
+
+    color:white;
+
+    padding:16px 24px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+    transform:translateX(400px);
+
+    opacity:0;
+
+    transition:all .4s ease;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    transform:translateX(0);
+
+    opacity:1;
+
+}
+
+.toast i{
+
+    font-size:22px;
+
+}

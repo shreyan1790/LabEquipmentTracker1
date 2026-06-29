@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management</title>
+
+	<link rel="stylesheet" href="/css/equipment.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🔬 Lab Tracker</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="/">🏠 Dashboard</a>
+            <a href="/equipment">💻 Equipment</a>
+            <a href="/student" class="active">🎓 Students</a>
+            <a href="/faculty">👨‍🏫 Faculty</a>
+            <a href="/transaction">📋 Transactions</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Student Management</h1>
+
+                <p>Manage laboratory students efficiently</p>
+
+            </div>
+
+            <button class="dashboard-btn"
+                    onclick="window.location.href='/'">
+
+                ← Dashboard
+
+            </button>
+
+        </div>
+
+        <!-- Student Form -->
+
+        <section class="card">
+
+            <h2>Add / Update Student</h2>
+
+            <input type="hidden" id="studentId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Student Name</label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter Student Name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Roll Number</label>
+
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        placeholder="Enter Roll Number">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <select id="department">
+
+                        <option value="">Select Department</option>
+
+                        <option>CSE</option>
+                        <option>IT</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>MECH</option>
+                        <option>CIVIL</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Year</label>
+
+                    <select id="year">
+
+                        <option value="">Select Year</option>
+
+                        <option>I Year</option>
+                        <option>II Year</option>
+                        <option>III Year</option>
+                        <option>IV Year</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Section</label>
+
+                    <input
+                        type="text"
+                        id="section"
+                        placeholder="Enter Section">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter Email Address">
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="Enter Phone Number">
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    class="save-btn"
+                    onclick="saveStudent()">
+
+                    💾 Save Student
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Search Student -->
+
+        <section class="card">
+
+            <h2>Search Student</h2>
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search Student Name">
+
+                    <button onclick="searchStudent()">
+
+                        🔍 Search
+
+                    </button>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <select id="departmentFilter">
+
+                        <option value="">All Departments</option>
+
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIVIL">CIVIL</option>
+
+                    </select>
+
+                    <button onclick="filterDepartment()">
+
+                        Filter
+
+                    </button>
+
+                    <button onclick="loadStudents()">
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+		
+		        <!-- Student Table -->
+
+		        <section class="card">
+
+		            <h2>Student Records</h2>
+
+		            <div class="table-container">
+
+		                <table>
+
+		                    <thead>
+
+		                        <tr>
+
+		                            <th>ID</th>
+		                            <th>Student Name</th>
+		                            <th>Roll Number</th>
+		                            <th>Department</th>
+		                            <th>Year</th>
+		                            <th>Section</th>
+		                            <th>Email</th>
+		                            <th>Phone</th>
+		                            <th>Action</th>
+
+		                        </tr>
+
+		                    </thead>
+
+		                    <tbody id="studentTable">
+
+		                        <!-- Student records will be loaded here -->
+
+		                    </tbody>
+
+		                </table>
+
+		            </div>
+
+		        </section>
+
+		    </main>
+
+		</div>
+
+		<script src="/js/student.js"></script>
+
+</body>
+
+</html>

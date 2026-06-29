@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Lab Equipment Tracker</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>	  
+		  
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🔬 Lab Tracker</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="/" class="active">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+            <a href="/equipment">
+
+                <i class="fa-solid fa-computer"></i>
+
+                Equipment
+
+            </a>
+
+            <a href="/student">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                Students
+
+            </a>
+
+            <a href="/faculty">
+
+                <i class="fa-solid fa-chalkboard-user"></i>
+
+                Faculty
+
+            </a>
+
+            <a href="/transaction">
+
+                <i class="fa-solid fa-right-left"></i>
+
+                Transactions
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Lab Equipment Tracking System</h1>
+
+                <p>
+
+                    Monitor and manage laboratory equipment efficiently.
+
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+				<div class="date-box">
+
+				    <i class="fa-solid fa-calendar-days"></i>
+
+				    <div class="date-time">
+
+				        <div id="currentDate"></div>
+
+				        <div id="currentTime"></div>
+
+				    </div>
+
+				</div>
+
+            </div>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <section class="cards">
+
+            <div class="card equipment-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-computer"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="equipmentCount">0</h2>
+
+                    <p>Total Equipment</p>
+
+                </div>
+
+            </div>
+
+            <div class="card student-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="studentCount">0</h2>
+
+                    <p>Total Students</p>
+
+                </div>
+
+            </div>
+
+            <div class="card faculty-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="facultyCount">0</h2>
+
+                    <p>Total Faculty</p>
+
+                </div>
+
+            </div>
+
+            <div class="card transaction-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-right-left"></i>
+
+                </div>
+
+                <div>
+
+                    <h2 id="transactionCount">0</h2>
+
+                    <p>Total Transactions</p>
+
+                </div>
+
+            </div>
+
+        </section>
+		
+		<!-- Equipment Analytics -->
+
+		<section class="chart-card">
+
+		    <h2>
+
+		        📊 Equipment Analytics
+
+		    </h2>
+
+		    <div class="chart-container">
+
+		        <canvas id="equipmentChart"></canvas>
+
+		    </div>
+
+		</section>
+		
+		
+
+        <!-- Quick Actions -->
+
+        <section class="quick-actions">
+
+            <h2>Quick Actions</h2>
+
+            <div class="action-grid">
+
+                <a href="/equipment" class="action-card">
+
+                    <i class="fa-solid fa-computer"></i>
+
+                    <h3>Equipment</h3>
+
+                    <p>Manage laboratory equipment</p>
+
+                </a>
+
+                <a href="/student" class="action-card">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                    <h3>Students</h3>
+
+                    <p>Manage student records</p>
+
+                </a>
+
+                <a href="/faculty" class="action-card">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                    <h3>Faculty</h3>
+
+                    <p>Manage faculty records</p>
+
+                </a>
+
+                <a href="/transaction" class="action-card">
+
+                    <i class="fa-solid fa-right-left"></i>
+
+                    <h3>Transactions</h3>
+
+                    <p>Issue & Return Equipment</p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+	
+
+		<!-- Recent Transactions -->
+
+		<section class="recent-card">
+
+		    <h2>
+
+		        📋 Recent Transactions
+
+		    </h2>
+
+		    <div class="table-container">
+
+		        <table>
+
+		            <thead>
+
+		                <tr>
+
+		                    <th>ID</th>
+
+		                    <th>Student</th>
+
+		                    <th>Equipment</th>
+
+		                    <th>Status</th>
+
+		                    <th>Issue Date</th>
+
+		                </tr>
+
+		            </thead>
+
+		            <tbody id="recentTransactionTable">
+
+		                <!-- Loaded from JavaScript -->
+
+		            </tbody>
+
+		        </table>
+
+		    </div>
+
+		</section>
+		
+		<!-- Welcome -->
+
+			<section class="welcome-card">
+
+			    <h2>
+
+			        👋 Welcome Back
+
+			    </h2>
+
+			    <p>
+
+			        Manage all laboratory equipment, students, faculty and
+			        equipment transactions from one centralized dashboard.
+
+			    </p>
+
+			</section>
+
+		<!-- Footer -->
+
+		
+        <footer class="footer">
+
+            © 2026 Lab Equipment Tracking System |
+            Developed by Shreya Gupta
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

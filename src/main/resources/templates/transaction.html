@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaction Management</title>
+
+    <link rel="stylesheet" href="/css/transaction.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<div class="container">
+
+	    <!-- Sidebar -->
+	    <aside class="sidebar">
+
+	        <div class="logo">
+	            <h2>LabTracker</h2>
+	        </div>
+
+	        <nav>
+
+	            <a href="/">🏠 Dashboard</a>
+
+	            <a href="/students">👨‍🎓 Students</a>
+
+	            <a href="/faculty">👨‍🏫 Faculty</a>
+
+	            <a href="/equipment">🖥 Equipment</a>
+
+	            <a href="/transactions" class="active">📋 Transactions</a>
+
+	        </nav>
+
+	    </aside>
+
+	    <!-- Main -->
+	    <main class="main">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Transaction Management</h1>
+
+                <p>Manage Equipment Issue & Return</p>
+
+            </div>
+
+            <button class="dashboard-btn"
+                    onclick="window.location.href='/'">
+
+                ← Dashboard
+
+            </button>
+
+        </div>
+
+        <!-- Transaction Form -->
+
+        <section class="card">
+
+            <h2>Issue / Return Equipment</h2>
+
+            <input type="hidden" id="transactionId">
+			
+			<div class="form-grid">
+
+			<div class="form-group">
+
+			    <label>Student Name</label>
+
+			    <input
+			        type="text"
+			        id="studentName"
+			        placeholder="Enter Student Name">
+
+			</div>
+
+                <div class="form-group">
+
+                    <label>Equipment Name</label>
+
+					<input
+					    type="text"
+					    id="equipmentName"
+					    placeholder="Enter Equipment Name">
+                </div>
+
+                <div class="form-group">
+
+                    <label>Issue Date</label>
+
+                    <input
+                        type="date"
+                        id="issueDate">
+
+                </div>
+				
+				<div class="form-group">
+
+				    <label>Issue Time</label>
+
+				    <input
+				        type="time"
+				        id="issueTime">
+
+				</div>
+				
+
+                <div class="form-group">
+
+                    <label>Return Date</label>
+
+					<input
+					    type="date"
+					    id="expectedReturnDate">
+
+                </div>
+				
+				
+				<div class="form-group">
+
+				    <label>Expected Return Time</label>
+
+				    <input
+				        type="time"
+				        id="expectedReturnTime">
+
+				</div>
+				
+				
+				<div class="form-group">
+
+				    <label>Actual Return Date</label>
+
+				    <input
+				        type="date"
+				        id="actualReturnDate">
+
+				</div>
+				
+				
+				<div class="form-group">
+
+				    <label>Actual Return Time</label>
+
+				    <input
+				        type="time"
+				        id="actualReturnTime">
+
+				</div>
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option value="">Select Status</option>
+
+                        <option>Issued</option>
+
+                        <option>Returned</option>
+
+                        <option>Overdue</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Remarks</label>
+
+                    <input
+                        type="text"
+                        id="remarks"
+                        placeholder="Enter Remarks">
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    class="save-btn"
+                    onclick="saveTransaction()">
+
+                    💾 Save Transaction
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Search Transaction -->
+
+        <section class="card">
+
+            <h2>Search Transaction</h2>
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search Student or Equipment">
+
+                    <button onclick="searchTransaction()">
+
+                        🔍 Search
+
+                    </button>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <select id="statusFilter">
+
+                        <option value="">All Status</option>
+
+                        <option>Issued</option>
+
+                        <option>Returned</option>
+
+                        <option>Overdue</option>
+
+                    </select>
+
+                    <button onclick="filterStatus()">
+
+                        Filter
+
+                    </button>
+
+                    <button onclick="loadTransactions()">
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+		
+		        <!-- Transaction Records -->
+
+		        <section class="card">
+
+		            <h2>Transaction Records</h2>
+
+		            <div class="table-container">
+
+		                <table>
+
+		                    <thead>
+
+		                        <tr>
+
+		                            <th>ID</th>
+
+		                            <th>Student</th>
+
+		                            <th>Equipment</th>
+		
+									<th>Issue Date</th>
+									
+									<th>Issue Time</th>
+
+									<th>Expected Return Date</th>
+									
+									<th>Expected Return Time</th>
+									
+									
+									<th>Actual Return Date</th> 
+									
+									<th>Actual Return Time</th>
+									
+		                            <th>Status</th>
+
+		                            <th>Remarks</th>
+
+		                            <th>Action</th>
+
+		                        </tr>
+
+		                    </thead>
+
+		                    <tbody id="transactionTable">
+
+		                        <!-- Transaction records will be loaded here -->
+
+		                    </tbody>
+
+		                </table>
+
+		            </div>
+
+		        </section>
+
+		    </main>
+
+		</div>
+
+		<script src="/js/transaction.js"></script>
+
+		</body>
+
+		</html>

@@ -1,0 +1,82 @@
+.form-card,
+.table-card{
+
+    background:white;
+    padding:25px;
+    margin-top:25px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+}
+
+.form-card input,
+.form-card select{
+
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+    margin-bottom:12px;
+
+}
+
+.form-card button{
+
+    background:#1565c0;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    cursor:pointer;
+    border-radius:5px;
+
+}
+
+.form-card button:hover{
+
+    background:#0d47a1;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+
+}
+
+table th{
+
+    background:#1565c0;
+    color:white;
+    padding:12px;
+
+}
+
+table td{
+
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+
+}
+
+.edit-btn{
+
+    background:orange;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    cursor:pointer;
+    margin-right:5px;
+
+}
+
+.delete-btn{
+
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    cursor:pointer;
+
+}

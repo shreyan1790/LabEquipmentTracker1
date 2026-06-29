@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Management</title>
+
+    <link rel="stylesheet" href="/css/faculty.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🔬 Lab Tracker</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="/">🏠 Dashboard</a>
+            <a href="/equipment">💻 Equipment</a>
+            <a href="/student">🎓 Students</a>
+            <a href="/faculty" class="active">👨‍🏫 Faculty</a>
+            <a href="/transaction">📋 Transactions</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Faculty Management</h1>
+
+                <p>Manage laboratory faculty efficiently</p>
+
+            </div>
+
+            <button class="dashboard-btn"
+                    onclick="window.location.href='/'">
+
+                ← Dashboard
+
+            </button>
+
+        </div>
+
+        <!-- Faculty Form -->
+
+        <section class="card">
+
+            <h2>Add / Update Faculty</h2>
+
+            <input type="hidden" id="facultyId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Faculty Name</label>
+
+                    <input
+                        type="text"
+                        id="facultyName"
+                        placeholder="Enter Faculty Name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Employee ID</label>
+
+                    <input
+                        type="text"
+                        id="employeeId"
+                        placeholder="Enter Employee ID">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <select id="department">
+
+                        <option value="">Select Department</option>
+
+                        <option>CSE</option>
+                        <option>IT</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>MECH</option>
+                        <option>CIVIL</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Designation</label>
+
+                    <select id="designation">
+
+                        <option value="">Select Designation</option>
+
+                        <option>Professor</option>
+                        <option>Associate Professor</option>
+                        <option>Assistant Professor</option>
+                        <option>Lab Assistant</option>
+                        <option>HOD</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter Email">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="Enter Phone Number">
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    class="save-btn"
+                    onclick="saveFaculty()">
+
+                    💾 Save Faculty
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Search Faculty -->
+
+        <section class="card">
+
+            <h2>Search Faculty</h2>
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search Faculty Name">
+
+                    <button onclick="searchFaculty()">
+
+                        🔍 Search
+
+                    </button>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <select id="departmentFilter">
+
+                        <option value="">All Departments</option>
+
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIVIL">CIVIL</option>
+
+                    </select>
+
+                    <button onclick="filterDepartment()">
+
+                        Filter
+
+                    </button>
+
+                    <button onclick="loadFaculty()">
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+		
+		        <!-- Faculty Table -->
+
+		        <section class="card">
+
+		            <h2>Faculty Records</h2>
+
+		            <div class="table-container">
+
+		                <table>
+
+		                    <thead>
+
+		                        <tr>
+
+		                            <th>ID</th>
+		                            <th>Faculty Name</th>
+		                            <th>Employee ID</th>
+		                            <th>Department</th>
+		                            <th>Designation</th>
+		                            <th>Email</th>
+		                            <th>Phone</th>
+		                            <th>Action</th>
+
+		                        </tr>
+
+		                    </thead>
+
+		                    <tbody id="facultyTable">
+
+		                        <!-- Faculty records will be loaded here -->
+
+		                    </tbody>
+
+		                </table>
+
+		            </div>
+
+		        </section>
+
+		    </main>
+
+		</div>
+
+		<script src="/js/faculty.js"></script>
+
+		</body>
+
+		</html>

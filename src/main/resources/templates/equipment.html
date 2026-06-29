@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Equipment Management</title>
+
+    <link rel="stylesheet" href="/css/equipment.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🔬 Lab Tracker</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="/">🏠 Dashboard</a>
+            <a href="/equipment" class="active">💻 Equipment</a>
+            <a href="/student">🎓 Students</a>
+            <a href="/faculty">👨‍🏫 Faculty</a>
+            <a href="/transaction">📋 Transactions</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Equipment Management</h1>
+                <p>Manage laboratory equipment efficiently</p>
+            </div>
+
+            <button class="dashboard-btn"
+                    onclick="window.location.href='/'">
+
+                ← Dashboard
+
+            </button>
+
+        </div>
+
+        <!-- Equipment Form -->
+
+        <section class="card">
+
+            <h2>Add / Update Equipment</h2>
+
+            <input type="hidden" id="equipmentId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Equipment Name</label>
+
+                    <input
+                        type="text"
+                        id="equipmentName"
+                        placeholder="Enter Equipment Name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        id="category"
+                        placeholder="Enter Category">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Total Quantity</label>
+
+                    <input
+                        type="number"
+                        id="totalQuantity"
+                        placeholder="Total Quantity">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Available Quantity</label>
+
+                    <input
+                        type="number"
+                        id="availableQuantity"
+                        placeholder="Available Quantity">
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option>Available</option>
+                        <option>Issued</option>
+                        <option>Maintenance</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button class="save-btn"
+                        onclick="saveEquipment()">
+
+                    💾 Save Equipment
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Search & Filter -->
+
+        <section class="card">
+
+            <h2>Search Equipment</h2>
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search Equipment Name">
+
+                    <button onclick="searchEquipment()">
+
+                        🔍 Search
+
+                    </button>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <select id="categoryFilter">
+
+                        <option value="">All Categories</option>
+
+                        <option value="Microcontroller">
+                            Microcontroller
+                        </option>
+
+                        <option value="Sensor">
+                            Sensor
+                        </option>
+
+                        <option value="Computer">
+                            Computer
+                        </option>
+
+                        <option value="Networking">
+                            Networking
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                    </select>
+
+                    <button onclick="filterCategory()">
+
+                        Filter
+
+                    </button>
+
+                    <button onclick="loadEquipment()">
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Equipment Table -->
+
+        <section class="card">
+
+            <h2>Equipment Inventory</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Equipment</th>
+                        <th>Category</th>
+                        <th>Total</th>
+                        <th>Available</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="equipmentTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Toast Notification -->
+
+<div id="toast" class="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage"></span>
+
+</div>
+
+<script src="/js/equipment.js"></script>
+
+</body>
+
+</html>
