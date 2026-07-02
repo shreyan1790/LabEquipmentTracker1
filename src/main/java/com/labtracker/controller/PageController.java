@@ -11,7 +11,7 @@ public class PageController {
         return "index";
     }
 
-    @GetMapping("/student")
+    @GetMapping("/students")
     public String student() {
         return "student";
     }
@@ -26,7 +26,7 @@ public class PageController {
         return "equipment";
     }
 
-    @GetMapping("/transaction")
+    @GetMapping("/transactions")
     public String transaction() {
         return "transaction";
     }
