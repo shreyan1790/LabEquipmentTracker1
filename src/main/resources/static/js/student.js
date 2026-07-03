@@ -47,8 +47,7 @@ function saveStudent() {
     const year = document.getElementById("year").value;
     const section = document.getElementById("section").value.trim();
     const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-
+const phoneNumber = document.getElementById("phone").value.trim();
     if (
         studentName === "" ||
         rollNumber === "" ||
@@ -56,25 +55,24 @@ function saveStudent() {
         year === "" ||
         section === "" ||
         email === "" ||
-        phone === ""
-    ) {
+phoneNumber === ""
+    ) 
+{
 
         alert("Please fill all fields.");
         return;
 
     }
 
-    const student = {
-
-        studentName,
-        rollNumber,
-        department,
-        year,
-        section,
-        email,
-        phone
-
-    };
+	const student = {
+	    studentName,
+	    rollNumber,
+	    department,
+	    year,
+	    section,
+	    email,
+	    phoneNumber
+	};
 
     let url = API_URL;
     let method = "POST";
@@ -194,7 +192,7 @@ function editStudent(id) {
 
         document.getElementById("email").value = student.email;
 
-        document.getElementById("phone").value = student.phone;
+        document.getElementById("phone").value = student.phoneNumber;
 
         window.scrollTo({
 
@@ -306,8 +304,7 @@ function showTable(data){
 
             <td>${student.email}</td>
 
-            <td>${student.phone}</td>
-
+            <td>${student.phoneNumber}</td>
             <td>
 
                 <button

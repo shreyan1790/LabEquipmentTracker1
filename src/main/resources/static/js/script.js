@@ -210,30 +210,27 @@ function loadChart(data){
     type:"doughnut",
         data:{
 
-            labels:[
-                "Equipment",
-                "Students",
-                "Faculty",
-                "Transactions"
-            ],
+			labels:[
+			    "Equipment",
+			    "Students",
+			    "Faculty"
+			],
 
-            datasets:[{
+			datasets:[{
 
-                label:"System Statistics",
+			    label:"System Statistics",
 
-                data:[
-                    data.totalEquipment ?? 0,
-                    data.totalStudents ?? 0,
-                    data.totalFaculty ?? 0,
-                    data.totalTransactions ?? 0
-                ],
+			    data:[
+			        data.totalEquipment ?? 0,
+			        data.totalStudents ?? 0,
+			        data.totalFaculty ?? 0
+			    ],
 
-                backgroundColor:[
-                    "#1565C0",
-                    "#2E7D32",
-                    "#F9A825",
-                    "#8E24AA"
-                ],
+			    backgroundColor:[
+			        "#1565C0",
+			        "#2E7D32",
+			        "#F9A825"
+			    ],
 
                 borderRadius:10
 
