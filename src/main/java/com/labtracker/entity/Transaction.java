@@ -1,5 +1,7 @@
 package com.labtracker.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,18 +21,24 @@ public class Transaction {
     // Equipment Details
     private String equipmentName;
 
+    // Equipment Quantity
+    private int equipmentQuantity;
+
     // Issue Details
-    private String issueDate;
+    private LocalDate issueDate;
 
     private String issueTime;
 
     // Expected Return Details
-    private String expectedReturnDate;
+    private LocalDate expectedReturnDate;
 
+    //expected return time
     private String expectedReturnTime;
+    
+  
 
-    // Actual Return Details
-    private String actualReturnDate;
+	// Actual Return Details
+    private LocalDate actualReturnDate;
 
     private String actualReturnTime;
 
@@ -79,11 +87,19 @@ public class Transaction {
         this.equipmentName = equipmentName;
     }
 
-    public String getIssueDate() {
+    public int getEquipmentQuantity() {
+        return equipmentQuantity;
+    }
+
+    public void setEquipmentQuantity(int equipmentQuantity) {
+        this.equipmentQuantity = equipmentQuantity;
+    }
+
+    public LocalDate getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(String issueDate) {
+    public void setIssueDate(LocalDate issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -95,27 +111,27 @@ public class Transaction {
         this.issueTime = issueTime;
     }
 
-    public String getExpectedReturnDate() {
+    public LocalDate getExpectedReturnDate() {
         return expectedReturnDate;
     }
 
-    public void setExpectedReturnDate(String expectedReturnDate) {
+    public void setExpectedReturnDate(LocalDate expectedReturnDate) {
         this.expectedReturnDate = expectedReturnDate;
     }
 
     public String getExpectedReturnTime() {
-        return expectedReturnTime;
-    }
+  		return expectedReturnTime;
+  	}
 
-    public void setExpectedReturnTime(String expectedReturnTime) {
-        this.expectedReturnTime = expectedReturnTime;
-    }
-
-    public String getActualReturnDate() {
+  	public void setExpectedReturnTime(String expectedReturnTime) {
+  		this.expectedReturnTime = expectedReturnTime;
+  	}
+  	
+    public LocalDate getActualReturnDate() {
         return actualReturnDate;
     }
 
-    public void setActualReturnDate(String actualReturnDate) {
+    public void setActualReturnDate(LocalDate actualReturnDate) {
         this.actualReturnDate = actualReturnDate;
     }
 
@@ -142,5 +158,4 @@ public class Transaction {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-
 }

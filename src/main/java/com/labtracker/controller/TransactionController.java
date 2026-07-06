@@ -21,9 +21,13 @@ public class TransactionController {
     // ==========================
     @PostMapping
     public Transaction addTransaction(@RequestBody Transaction transaction) {
+
+        System.out.println("Equipment : " + transaction.getEquipmentName());
+        System.out.println("Quantity  : " + transaction.getEquipmentQuantity());
+        System.out.println("Status    : " + transaction.getStatus());
+
         return transactionService.saveTransaction(transaction);
     }
-
     // ==========================
     // Get All Transactions
     // ==========================

@@ -1,4 +1,9 @@
 const API_URL = "/api/transactions";
+const EQUIPMENT_API = "/api/equipment";
+const STUDENT_API = "/api/students";
+
+let equipmentNames = [];
+let studentNames = [];
 
 // =========================
 // Load Transactions
@@ -6,6 +11,8 @@ const API_URL = "/api/transactions";
 
 window.onload = () => {
     loadTransactions();
+    loadEquipmentDropdown();
+    loadStudentDropdown();
 };
 
 // =========================
@@ -57,24 +64,162 @@ function loadTransactions(){
 }
 
 // =========================
+// Load Equipment Dropdown
+// =========================
+
+function loadEquipmentDropdown() {
+
+    fetch(EQUIPMENT_API)
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            equipmentNames = [];
+
+            const equipmentList = document.getElementById("equipmentList");
+
+            equipmentList.innerHTML = "";
+
+            data.forEach(equipment => {
+
+                equipmentNames.push(equipment.equipmentName);
+
+                const option = document.createElement("option");
+
+                option.value = equipment.equipmentName;
+
+                equipmentList.appendChild(option);
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error("Error loading equipment:", error);
+
+        });
+
+}
+
+// =========================
+// Show Available Stock
+// =========================
+
+function showAvailableStock() {
+
+    const equipmentName = document.getElementById("equipmentName").value;
+
+    fetch("/api/equipment")
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            const equipment = data.find(
+                e => e.equipmentName === equipmentName
+            );
+
+            if (equipment) {
+
+                document.getElementById("availableStock").value =
+                    equipment.availableQuantity;
+
+            } else {
+
+                document.getElementById("availableStock").value = "";
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+        });
+
+}
+
+// =========================
+// Load Student Dropdown
+// =========================
+
+function loadStudentDropdown() {
+
+    fetch(STUDENT_API)
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            studentNames = [];
+
+            const studentList = document.getElementById("studentList");
+
+            studentList.innerHTML = "";
+
+            data.forEach(student => {
+
+                studentNames.push(student.studentName);
+
+                const option = document.createElement("option");
+
+                option.value = student.studentName;
+
+                studentList.appendChild(option);
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error("Error loading students:", error);
+
+        });
+
+}
+// =========================
 // Save Transaction
 // =========================
 
 function saveTransaction(){
 
     const id=document.getElementById("transactionId").value;
+	
+	const expectedReturnTime = document.getElementById("expectedReturnTime").value;
 
-    const studentName=document.getElementById("studentName").value;
 
-    const equipmentName=document.getElementById("equipmentName").value;
 
+//	if (!studentNames.includes(studentName.trim())) {
+
+//	    alert("Please select a valid student from the Student list.");
+
+	//    return;
+
+//	}
+//	if (!equipmentNames.includes(equipmentName)) {
+
+//'	    alert("Please select a valid equipment from the Equipment list.");
+
+	//    return;
+
+//	}
+
+const studentName = document.getElementById("studentName").value.trim();
+
+const equipmentName = document.getElementById("equipmentName").value.trim();
+
+	
+	const equipmentQuantity = parseInt(document.getElementById("equipmentQuantity").value);
+	
 	const issueDate = document.getElementById("issueDate").value;
 
 	const issueTime = document.getElementById("issueTime").value;
 
 	const expectedReturnDate = document.getElementById("expectedReturnDate").value;
-
-	const expectedReturnTime = document.getElementById("expectedReturnTime").value;
 
 	const actualReturnDate = document.getElementById("actualReturnDate").value;
 
@@ -84,23 +229,25 @@ function saveTransaction(){
 
     const remarks=document.getElementById("remarks").value.trim();
 
-    if(
+	if(
 
-        studentName===""||
+	    studentName==="" ||
 
-        equipmentName===""||
+	    equipmentName==="" ||
 
-		issueDate==""||
+	    equipmentQuantity <= 0 ||
 
-		issueTime==""||
+	    issueDate==="" ||
 
-		expectedReturnDate==""||
+	    issueTime==="" ||
 
-		expectedReturnTime==""||
+	    expectedReturnDate==="" ||
 
-        status===""
+	    expectedReturnTime==="" ||
 
-    ){
+	    status===""
+
+	){
 
         alert("Please fill all fields.");
 
@@ -109,29 +256,19 @@ function saveTransaction(){
     }
 
 	const transaction = {
-
 	    studentName,
-
 	    equipmentName,
-
+	    equipmentQuantity,
 	    issueDate,
-
 	    issueTime,
-
 	    expectedReturnDate,
-
 	    expectedReturnTime,
-
 	    actualReturnDate,
-
 	    actualReturnTime,
-
 	    status,
-
 	    remarks
-
 	};
-
+	
     let url=API_URL;
 
     let method="POST";
@@ -216,14 +353,17 @@ function editTransaction(id){
 
         document.getElementById("equipmentName").value = transaction.equipmentName;
 
+		document.getElementById("equipmentQuantity").value = transaction.equipmentQuantity;
+		
 		document.getElementById("issueDate").value = transaction.issueDate;
 
 		document.getElementById("issueTime").value = transaction.issueTime;
 
 		document.getElementById("expectedReturnDate").value = transaction.expectedReturnDate;
-
-		document.getElementById("expectedReturnTime").value = transaction.expectedReturnTime;
-
+		
+		document.getElementById("expectedReturnTime").value =
+		    transaction.expectedReturnTime || "";
+			
 		document.getElementById("actualReturnDate").value = transaction.actualReturnDate;
 
 		document.getElementById("actualReturnTime").value = transaction.actualReturnTime;
@@ -371,13 +511,15 @@ function showTable(data){
 
             <td>${transaction.equipmentName}</td>
 
+			<td>${transaction.equipmentQuantity}</td>
+			
 			<td>${transaction.issueDate}</td>
 
 			<td>${transaction.issueTime}</td>
 
 			<td>${transaction.expectedReturnDate}</td>
 
-			<td>${transaction.expectedReturnTime}</td>
+			<td>${transaction.expectedReturnTime || "-"}</td>
 
 			<td>${transaction.actualReturnDate || "-"}</td>
 
@@ -447,13 +589,13 @@ function clearForm(){
 
     document.getElementById("equipmentName").value="";
 
+	document.getElementById("equipmentQuantity").value = 1;
+	
 	document.getElementById("issueDate").value="";
 
 	document.getElementById("issueTime").value="";
 
 	document.getElementById("expectedReturnDate").value="";
-
-	document.getElementById("expectedReturnTime").value="";
 
 	document.getElementById("actualReturnDate").value="";
 

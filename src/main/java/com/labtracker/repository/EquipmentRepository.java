@@ -14,4 +14,6 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
 
     List<Equipment> findByCategoryIgnoreCase(String category);
 
+    Equipment findByEquipmentName(String equipmentName);
+
 }

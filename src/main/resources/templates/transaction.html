@@ -91,11 +91,13 @@
 
 			    <label>Student Name</label>
 
-			    <input
-			        type="text"
-			        id="studentName"
-			        placeholder="Enter Student Name">
+				<input
+				    type="text"
+				    id="studentName"
+				    list="studentList"
+				    placeholder="Search Student">
 
+				<datalist id="studentList"></datalist>
 			</div>
 
                 <div class="form-group">
@@ -105,8 +107,38 @@
 					<input
 					    type="text"
 					    id="equipmentName"
-					    placeholder="Enter Equipment Name">
+					    list="equipmentList"
+					    placeholder="Search Equipment"
+					    onchange="showAvailableStock()">
+
+					<datalist id="equipmentList">
+						
+					</datalist>
                 </div>
+				
+				<div class="form-group">
+
+				    <label>Equipment Quantity</label>
+
+				    <input
+				        type="number"
+				        id="equipmentQuantity"
+				        min="1"
+				        value="1"
+				        placeholder="Enter Quantity">
+
+				</div>
+				
+				<div class="form-group">
+
+				    <label>Available Stock</label>
+
+				    <input
+				        type="text"
+				        id="availableStock"
+				        readonly>
+
+				</div>
 
                 <div class="form-group">
 
@@ -129,17 +161,16 @@
 				</div>
 				
 
-                <div class="form-group">
+				<div class="form-group">
 
-                    <label>Return Date</label>
+				    <label>Expected Return Date</label>
 
-					<input
-					    type="date"
-					    id="expectedReturnDate">
+				    <input
+				        type="date"
+				        id="expectedReturnDate">
 
-                </div>
-				
-				
+				</div>
+
 				<div class="form-group">
 
 				    <label>Expected Return Time</label>
@@ -151,6 +182,7 @@
 				</div>
 				
 				
+								
 				<div class="form-group">
 
 				    <label>Actual Return Date</label>
@@ -291,18 +323,19 @@
 		                            <th>Student</th>
 
 		                            <th>Equipment</th>
+									
+									<th>Quantity</th>
 		
 									<th>Issue Date</th>
-									
+
 									<th>Issue Time</th>
 
 									<th>Expected Return Date</th>
-									
+
 									<th>Expected Return Time</th>
-									
-									
-									<th>Actual Return Date</th> 
-									
+
+									<th>Actual Return Date</th>
+
 									<th>Actual Return Time</th>
 									
 		                            <th>Status</th>

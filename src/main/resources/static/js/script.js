@@ -226,14 +226,16 @@ function loadChart(data){
 			        data.totalFaculty ?? 0
 			    ],
 
-			    backgroundColor:[
-			        "#1565C0",
-			        "#2E7D32",
-			        "#F9A825"
-			    ],
+				backgroundColor:[
+				    "#1565C0",   // Equipment (Blue)
+				    "#2E7D32",   // Students (Green)
+				    "#7B1FA2"    // Faculty (Purple)
+				],
 
-                borderRadius:10
-
+				borderRadius:8,
+				borderWidth:4,
+				borderColor:"#ffffff",
+				hoverOffset:12
             }]
 
         },
@@ -244,6 +246,8 @@ function loadChart(data){
 
 		    maintainAspectRatio:false,
 
+		    cutout:"50%",
+
 		    plugins:{
 
 		        legend:{
@@ -253,7 +257,6 @@ function loadChart(data){
 		    }
 
 		}
-
     });
 
 }
