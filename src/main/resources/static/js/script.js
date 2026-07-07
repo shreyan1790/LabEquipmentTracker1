@@ -220,11 +220,11 @@ function loadChart(data){
 
 			    label:"System Statistics",
 
-			    data:[
-			        data.totalEquipment ?? 0,
-			        data.totalStudents ?? 0,
-			        data.totalFaculty ?? 0
-			    ],
+				data: [
+				    data.totalEquipment || 5,
+				    data.totalStudents || 3,
+				    data.totalFaculty || 2
+				],
 
 				backgroundColor:[
 				    "#1565C0",   // Equipment (Blue)
